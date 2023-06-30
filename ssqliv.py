@@ -30,7 +30,7 @@ ascii_art = """
  ___/ /__/ / /_/ / / /___/ / | |/ /  
 /____/____/\___\_\/_____/_/  |___/   v1.
                                      
-  "SIMPLE SQL Injection VERIFY v1."
+  "SIMPLE SQL Injection VERIFY v1. by twitter.com/mtz_treze."
 """
 
 print(ascii_art)
