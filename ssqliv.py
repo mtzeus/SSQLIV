@@ -1,5 +1,6 @@
 import requests
 import time
+from urllib.parse import urlparse
 
 # Função para verificar se um site é vulnerável a SQL Injection
 def check_sql_injection(url):
@@ -10,15 +11,10 @@ def check_sql_injection(url):
         response = requests.get(modified_url)
 
         if "error" in response.text.lower():
-            print("╔════════════════════════════════════════════╗")
-            print("║ POSSIVELMENTE Vulnerável A INJEÇÃO SQL     ║")
-            print("╚════════════════════════════════════════════╝")
-            break
+            print("POSSIVELMENTE Vulnerável A INJEÇÃO SQL")
+            return
 
-    else:
-        print("╔════════════════════════════════════════════╗")
-        print("║ POSSIVELMENTE NÃO Vulnerável A INJE. SQL   ║")
-        print("╚════════════════════════════════════════════╝")
+    print("POSSIVELMENTE NÃO Vulnerável A INJEÇÃO SQL")
 
     time.sleep(1)  # Intervalo de 1 segundo após a resposta
 
@@ -30,17 +26,30 @@ ascii_art = """
  ___/ /__/ / /_/ / / /___/ / | |/ /  
 /____/____/\___\_\/_____/_/  |___/   v1.
                                      
-  "SIMPLE SQL Injection VERIFY v1. by twitter.com/mtz_treze."
+  "SIMPLE SQL Injection VERIFY v1. by: twitter.com/mtz_treze"
 """
 
 print(ascii_art)
 print("SSQLiV Iniciando..")
 print("Digite a URL do site para verificar.")
-print("Exemplo: http://www.exemplo.com/")
-print("Exemplo: http://www.exemplo.com/produtos.php?id=")
+print("Exemplo: http://www.example.com")
 
-# Solicitar a URL do site ao usuário
-site_url = input("URL do Alvo: ")
+while True:
+    # Solicitar a URL do site ao usuário
+    site_url = input("URL do Alvo (ou 'sair' para encerrar): ")
 
-# Verificar se o site é vulnerável a SQL Injection
-check_sql_injection(site_url)
+    if site_url.lower() == "sair":
+        break
+
+    if not site_url:
+        print("Erro: A URL não pode estar vazia. Por favor, tente novamente.")
+        continue
+
+    parsed_url = urlparse(site_url)
+    if not all([parsed_url.scheme, parsed_url.netloc]):
+        print("Erro: A URL fornecida não é válida.")
+        continue
+
+    # Verificar se o site é vulnerável a SQL Injection
+    check_sql_injection(site_url)
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~>")  # Linha em branco para separar as respostas
