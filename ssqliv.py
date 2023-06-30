@@ -36,7 +36,8 @@ ascii_art = """
 print(ascii_art)
 print("SSQLiV Iniciando..")
 print("Digite a URL do site para verificar.")
-print("Exemplo: http://www.example.com")
+print("Exemplo: http://www.exemplo.com/")
+print("Exemplo: http://www.exemplo.com/produtos.php?id=")
 
 # Solicitar a URL do site ao usuário
 site_url = input("URL do Alvo: ")
