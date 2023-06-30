@@ -5,11 +5,11 @@ The SQL Injection Verifier is a simple Python tool that allows you to check if a
 Usage
 Make sure you have Python installed on your system.
 Install the requests library by running pip install requests in your command line.
-Download the sql_injection_verifier.py file.
+Download the ssqliv.py file.
 Open a terminal or command prompt and navigate to the directory where the sql_injection_verifier.py file is located.
-Run the script by executing the command: python sql_injection_verifier.py
+Run the script by executing the command: python ssqliv.py
 Follow the on-screen instructions.
-Enter the URL of the target website when prompted. For example: http://www.example.com
+Enter the URL of the target website when prompted. For example: http://www.example.com/products.php?id=
 The tool will perform SQL Injection checks using common payloads and display the result.
 Requirements
 Python 3.x
